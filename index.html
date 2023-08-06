@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html lang="cn">
+    <head>
+        <title>Surprising Gift For You</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
+        <meta name="renderer" content="webkit" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <link rel="icon" type="image/png" href="./assets/favicon.png" />
+        <link rel="stylesheet" href="./fonts/AaJiaLiLiJian-2/AaJiaLiLiJian-2.css" />
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'AaJiaLiLiJian-2';
+
+                &::before,
+                &::after {
+                    box-sizing: border-box;
+                }
+            }
+
+            .app {
+                width: 100vw;
+                height: 100vh;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .container {
+                width: 100vw;
+                height: 100vh;
+                outline: none;
+                background-image: linear-gradient(rgba(231, 54, 93, 0.2), rgba(255, 255, 255, 1));
+            }
+
+            audio {
+                visibility: hidden;
+            }
+
+            .title {
+                width: 100%;
+                position: absolute;
+                top: 35%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: none;
+            }
+
+            .title-item {
+                width: 6rem;
+                margin: 0 auto;
+                color: #ffeffa;
+                font-size: 0.675rem;
+                text-align: center;
+                white-space: nowrap;
+                line-height: 1.4;
+                text-shadow: 0 0 5px #ff37709a;
+            }
+
+            .title-item > p:last-child {
+                text-align: right;
+                font-size: 0.3rem;
+            }
+
+            .title-arrow {
+                font-size: 0.5rem;
+                color: #ff9da9;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 0.5rem 0;
+            }
+
+            .loading {
+                width: 100vw;
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.8);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+
+            .loading-title {
+                color: #777;
+                font-size: 0.3rem;
+                margin-bottom: 0.2rem;
+            }
+            
+            .loading-icon {
+                display: inline-block;
+                width: 65px;
+                height: 65px;
+                animation: loading 1s linear infinite;
+            }
+
+            @keyframes loading {
+                0% {
+                    transform: rotate(0);
+                }
+                50% {
+                    transform: rotate(180deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+
+            .card {
+                width: 100vw;
+                height: 100vh;
+                padding: 0.3rem;
+                /* background: rgba(255, 255, 255, 0.5); */
+                display: flex;
+                align-items: center;
+                transition: background 0.3s ease;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 99;
+            }
+
+            .card-item {
+                width: 100%;
+                background: #fff;
+                box-shadow: 0 0 10px #fad8e0;
+                border-radius: 0.3rem;
+                padding: 0.8rem 0.4rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                background-image: linear-gradient(45deg, rgba(231, 54, 93, 0.08), rgba(255, 255, 255, 1));
+                animation: card 3s ease forwards;
+                transform: scale(0) translate(0, 500%);
+                opacity: 0;
+            }
+
+            .card-item > img {
+                width: 100%;
+                margin-bottom: 0.4rem;
+            }
+
+            .card-item > p {
+                color: #4a4949;
+                font-size: 0.48rem;
+                text-align: center;
+                line-height: 1.5;
+            }
+
+            .card-item > svg {
+                width: 0.5rem;
+                height: 0.5rem;
+                cursor: pointer;
+                position: absolute;
+                right: 0.4rem;
+                top: 0.4rem;
+            }
+
+            @keyframes card {
+                0% {
+                    transform: scale(0) translate(0, 400%);
+                    opacity: 0;
+                }
+                60% {
+                    transform: scale(0.5) translate(0, -220%);
+                    opacity: 0.5;
+                }
+                100% {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="app">
+            <div class="title">
+                <div class="title-item">
+                    <p><span class="source">董驭</span>为你送来了礼物</p>
+                    <p>For <span class="target">WSP</span></p>
+                </div>
+                <div class="title-arrow">点击打开~</div>
+            </div>
+            <div class="loading">
+                <span class="loading-icon">
+                    <svg width="65px" height="25px" viewBox="0 0 66 27" class="spinner"><g data-v-a3f2c846="" id="short-flow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g data-v-a3f2c846="" id="Desktop-HD-Copy-8" transform="translate(-687.000000, -226.000000)"><g data-v-a3f2c846="" id="deco" transform="translate(687.000000, 226.000000)"><g data-v-a3f2c846="" id="Group-2"><rect data-v-a3f2c846="" id="Rectangle" x="0" y="0" width="66" height="27"></rect></g> <g data-v-a3f2c846="" id="decoPath" transform="translate(14.000000, 7.000000)" fill="#222222"><path data-v-a3f2c846="" id="Stroke-3" d="M4.98429119,8.5806 C4.98429119,9.52183052 4.22094547,10.2848857 3.27862069,10.2848857 C2.33592299,10.2848857 1.5715198,9.52145752 1.5715198,8.5806 C1.5715198,8.20008344 1.69678943,7.83957328 1.92463309,7.54522606 C1.99962983,7.44652715 2.08225349,7.35991029 2.17236702,7.28491146 C2.4817145,7.02193575 2.8677724,6.87774286 3.27862069,6.87774286 C4.22131839,6.87774286 4.98429119,7.63974248 4.98429119,8.5806 Z M5.98429119,8.5806 C5.98429119,7.08717181 4.77331763,5.87774286 3.27862069,5.87774286 C2.62859011,5.87774286 2.0134151,6.10751114 1.52864415,6.51967081 C1.38396071,6.64005064 1.24887488,6.78166516 1.13108668,6.93673339 C0.771457924,7.40129753 0.571519796,7.97669417 0.571519796,8.5806 C0.571519796,10.0740282 1.78392375,11.2848857 3.27862069,11.2848857 C4.77314502,11.2848857 5.98429119,10.0742005 5.98429119,8.5806 Z"></path> <path data-v-a3f2c846="" id="Stroke-7" d="M1.02215786,7.09636061 L1.47527765,7.30774286 L1.08970734,6.98941043 C1.07562498,7.00646725 1.06178567,7.02367627 1.04819774,7.04103078 C1.03946897,7.0594153 1.03078905,7.07785876 1.02215786,7.09636061 Z M38.1531739,5.19769654 L37.7000542,4.98631429 L38.0856245,5.30464672 C38.0997068,5.28758989 38.1135461,5.27038087 38.1271341,5.25302637 C38.1358628,5.23464184 38.1445428,5.21619838 38.1531739,5.19769654 Z M34.9629181,8.27864521 C34.5326262,8.67794342 34.0462731,9.06624292 33.4987682,9.4429797 C31.97487,10.4921744 29.7326519,10.6693127 26.7948555,10.146832 C25.5897447,9.93250567 24.3378647,9.61801592 22.7897845,9.16410328 C22.3882788,9.04637779 20.3048623,8.41329289 19.7958834,8.26944643 C18.3950985,7.87356684 16.9941994,7.41487688 15.4208719,6.8497839 C14.6464792,6.57164481 10.7983029,5.12340658 9.83940289,4.79398768 C7.95130386,4.14535328 6.62496864,3.83345714 5.51471571,3.83345714 C5.0492048,3.83345714 4.61550311,3.89640613 4.21241368,4.01541193 C2.79799282,4.43299738 1.76049247,5.54079535 1.04819774,7.04103078 C0.97884278,7.12961096 0.916037,7.22198156 0.860888462,7.31725195 L1.29361737,7.56774286 L1.76885329,7.72314819 C2.19986874,6.40508511 2.97392774,5.16469022 4.21241368,4.01541193 C4.64270564,3.61611372 5.12905872,3.22781422 5.67656359,2.85107744 C8.69829043,0.770636687 11.7464791,1.17748503 19.3397433,4.02728878 C20.0284123,4.28575303 22.6456367,5.2848881 23.1410739,5.47213684 C23.6499897,5.66447976 24.1129235,5.83778575 24.555902,6.00151076 C28.9813752,7.63716718 31.8389675,8.4606 33.6606161,8.4606 C34.126127,8.4606 34.5598287,8.39765101 34.9629181,8.27864521 C36.377339,7.86105977 37.4148393,6.75326179 38.1271341,5.25302637 C38.196489,5.16444618 38.2592948,5.07207558 38.3144433,4.97680519 L37.8817144,4.72631429 L37.4064785,4.57090896 C36.9754631,5.88897203 36.2014041,7.12936692 34.9629181,8.27864521 Z M38.3569504,4.88171961 C38.5435911,4.3109646 37.7498233,3.956119 37.4489855,4.47582338 C37.4113028,4.54092125 37.3660483,4.60552605 37.3144838,4.66798185 L37.2469344,4.77493204 C36.480003,6.41892897 35.3140901,7.4606 33.6606161,7.4606 C32.005331,7.4606 29.2045692,6.65354325 24.9025811,5.06352697 C24.4620764,4.90071628 24.001381,4.72824825 23.4946126,4.53671692 C23.0017351,4.35043564 20.3830214,3.35073204 19.6911198,3.09105454 C11.7938997,0.127174091 8.50673313,-0.311571159 5.10958974,2.02734167 C2.80346297,3.6141819 1.46650603,5.43034574 0.818381445,7.41233753 C0.631740735,7.98309254 1.42550846,8.33793814 1.72634628,7.81823376 C1.76402905,7.75313589 1.80928354,7.68853109 1.86084796,7.62607529 L1.92839744,7.51912511 C2.69532879,5.87512817 3.86124173,4.83345714 5.51471571,4.83345714 C6.48600631,4.83345714 7.72353441,5.12446973 9.51450216,5.7397358 C10.456758,6.06343681 14.2957733,7.50822731 15.0828436,7.79091982 C16.6764033,8.36327964 18.0985449,8.82892494 19.5239206,9.2317542 C20.0215202,9.37238464 22.0983074,10.0034551 22.5084199,10.1237042 C24.0884406,10.5869821 25.3725707,10.9095735 26.6197553,11.1313826 C29.7920887,11.6955752 32.2753425,11.4993948 34.0657421,10.2667155 C36.3718688,8.67987525 37.7088258,6.8637114 38.3569504,4.88171961 Z"></path> <path data-v-a3f2c846="" id="Stroke-5" d="M37.6953001,3.59672857 C37.6953001,3.90862286 37.610963,4.20779274 37.4537701,4.46869383 C37.4116317,4.54133553 37.3663772,4.60594034 37.3148128,4.66839614 C36.9911065,5.06732523 36.5104276,5.30101429 35.9896296,5.30101429 C35.0469319,5.30101429 34.2825287,4.5375861 34.2825287,3.59672857 C34.2825287,2.65712888 35.0471032,1.89387143 35.9896296,1.89387143 C36.9308969,1.89387143 37.6953001,2.65729962 37.6953001,3.59672857 Z M38.6953001,3.59672857 C38.6953001,2.10472895 37.4828962,0.893871429 35.9896296,0.893871429 C34.495204,0.893871429 33.2825287,2.10445782 33.2825287,3.59672857 C33.2825287,5.09015676 34.4949327,6.30101429 35.9896296,6.30101429 C36.8147584,6.30101429 37.5795721,5.92918896 38.0886529,5.30176281 C38.1719145,5.2009434 38.2488192,5.09115511 38.3147723,4.97721947 C38.5607242,4.56914949 38.6953001,4.09176692 38.6953001,3.59672857 Z"></path></g></g></g></g></svg>
+                </span>
+                <div class="loading-title">加载中 0%</div>
+            </div>
+            <!-- 主体 -->
+            <div class="container"></div>
+            <!-- 卡片 -->
+            <div class="card">
+                <div class="card-item">
+                    <svg onclick="setReload()" t="1691322105384" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2320" width="200" height="200"><path d="M794.6 306.6c-68.8-101.2-186.2-166-316.6-166-209.5 0-379.9 166-379.9 371.5S268.5 883.5 478 883.5c95.6 0 185.9-34.7 255.3-96.4 23.6-21 25.7-57.1 4.8-80.7-21-23.6-57.1-25.7-80.7-4.8-48.6 43.2-112 67.6-179.4 67.6-147 0-265.6-115.5-265.6-257.2S331 254.8 478 254.8c85.9 0 163.5 39.8 212.3 102.6l-72.7 35.5c-28.2 13.8-28.8 36.6-1 50.9l204.2 104.9c27.4 14.1 55.1 1 60.9-29.7l43-225.5c5.8-30.3-12.4-44.4-40.7-30.6l-89.4 43.7z" fill="#ffa1ac" p-id="2321"></path></svg>
+                    <img src="./assets/klm.gif" />
+                    <p>花的意义是，它为你设定期限，让你更珍惜它灿烂盛放的时刻，也告诉你，当下的这一刻很重要</p>
+                </div>
+            </div>
+            <!-- 音乐 -->
+            <audio class="audio" autoplay></audio>
+        </div>
+
+        <!-- Import maps polyfill -->
+        <script src="./plugins/rem_750.js"></script>
+        <script src="./plugins/jquery-1.8.3.js"></script>
+        <script async src="./plugins/es-module-shims/dist/es-module-shims.js"></script>
+        <script type="importmap">
+            {
+                "imports": {
+                    "three": "./plugins/three/build/three.module.js",
+                    "three/addons/": "./plugins/three/examples/jsm/"
+                }
+            }
+        </script>
+        <script type="module">
+            import * as THREE from 'three'
+            import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
+            import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js'
+            import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
+            import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js'
+
+            let mixer, action // 动画实例
+            let loading = false // 加载状态
+            let progress = false // 进度
+            let index = 0 // 动画索引
+            let textList = [
+                '听山河把春风酿成千言万语，吹过旧人故里',
+                'Love is a vine that grows into our hearts',
+                '玫瑰与山茶，温柔与浪漫',
+                '桔梗花向日落献祭，灵魂不朽',
+                '风需要解释，你便是',
+                '玫瑰是我偷的，但浪漫判我无罪',
+                '北疆、禾木、看雪',
+                '日落是免费的，春夏秋冬也是，不要觉得人生那么无望，希望你快乐',
+                '爱意东升西落，浪漫至死不渝',
+                '情字何解 怎落笔都不对，而我独缺 你一生的了解',
+                '别听世俗的耳语，去看自己喜欢的风景',
+                '芦苇花开岁已寒，若霜又降路遥漫长，墙外是谁在吟唱，凤求凰',
+                '花的意义是，它为你设定期限，让你更珍惜它灿烂盛放的时刻，也告诉你，当下的这一刻很重要',
+                '此心昭昭若明月 千山历行 向你独行',
+                '想做个快乐的小废物,混吃混喝被照顾'
+            ]
+
+            const clock = new THREE.Clock()
+            const container = document.querySelector('.container')
+
+            /* 设置 WebGL 渲染器 */
+            const renderer = new THREE.WebGLRenderer({
+                alpha: true, // canvas是否包含alpha (透明度) 默认为 false
+                antialias: true,
+                precision: 'highp',
+            })
+            renderer.setClearAlpha(0.0) // 设置alpha，合法参数是一个 0.0 到 1.0 之间的浮点数
+            renderer.setPixelRatio(window.devicePixelRatio)
+            renderer.setSize(window.innerWidth, window.innerHeight)
+            container.appendChild(renderer.domElement)
+
+            /* 环境光 */
+            const pmremGenerator = new THREE.PMREMGenerator(renderer)
+            const scene = new THREE.Scene()
+            scene.environment = pmremGenerator.fromScene(
+                new RoomEnvironment(renderer),
+                0.04
+            ).texture
+
+            /* 透视投影相机 */
+            const camera = new THREE.PerspectiveCamera(
+                40,
+                window.innerWidth / window.innerHeight,
+                1,
+                100
+            )
+            camera.position.set(-10, 5, 18)
+
+            /* 相机控件 */
+            const controls = new OrbitControls(camera, renderer.domElement)
+            controls.target.set(0, 0.5, 0)
+            controls.update()
+            controls.enablePan = false // 禁用平移
+            controls.enableZoom = false // 禁用缩放
+            controls.enableDamping = true // 启用阻尼系数
+
+            /* 监听进度 */
+            const manager = new THREE.LoadingManager()
+            manager.onStart = (url, itemsLoaded, itemsTotal) => {
+                loading = true
+            }
+            manager.onProgress = (url, itemsLoaded, itemsTotal) => {
+                progress = (itemsLoaded / itemsTotal).toFixed(2) * 100
+                $('.loading-title').html(`加载中 ${progress}%`)
+            }
+            manager.onLoad = () => {
+                loading = false
+                setTimeout(() => {
+                    // 设置名字
+                    const source = decodeURI(window.location.search).match(/(?<=source\=).*(?<=\&)/)?.[0]?.replace(/\&/, '')
+                    const target = decodeURI(window.location.search).match(/(?<=target\=).*/)?.[0]
+                    if (source) $('.title-item .source').html(source)
+                    if (target) $('.title-item .target').html(target)
+
+                    $('.loading').fadeOut(200)
+                    $('.title').fadeIn(800)
+                    setAudio(index)
+                })
+            }
+            manager.onError = (url, itemsLoaded, itemsTotal) => {
+                loading = false
+                console.error('导入模型失败！')
+            }
+
+            /* 加载模型 */
+            const dracoLoader = new DRACOLoader(manager)
+            dracoLoader.setDecoderPath(
+                './plugins/three/examples/jsm/libs/draco/gltf/'
+            )
+            const loader = new GLTFLoader(manager)
+            loader.setDRACOLoader(dracoLoader)
+            loader.load(
+                './assets/open-superbox.glb',
+                function (gltf) {
+                    const model = gltf.scene
+                    model.position.set(0, -4.5, 0)
+                    model.scale.set(1.6, 1.6, 1.6)
+                    scene.add(model)
+                    /* 设置模型块显示隐藏 */
+                    model.children[0].children[1].visible = false // 盒子丝带-1
+                    model.children[0].children[3].visible = false // 盒子丝带-2
+                    model.children[0].children[6].visible = false // 主体盒子
+                    model.children[0].children[9].visible = false // 底部丝带-1
+                    model.children[0].children[10].visible = false // 底部丝带-2
+                    model.children[0].children[11].visible = false // 底部丝带-3
+                    model.children[0].children[12].visible = false // 底部丝带-4
+                    mixer = new THREE.AnimationMixer(model)
+                    action = mixer.clipAction(gltf.animations[index]).play()
+                    action.loop = THREE.LoopOnce
+                    action.clampWhenFinished = true
+                    window.addEventListener('click', () => {
+                        index += 1
+                        if (index === 1) {
+                            $('.title-item').fadeOut(800)
+                            $('.title-arrow').fadeOut(400)
+                            setTimeout(() => {
+                                $('.title-arrow').html('点击打开盖子~')
+                                $('.title-arrow').fadeIn(400)
+                            }, 400)
+                            model.children[0].children[0].visible = false // 初始-盒子丝带-1
+                            model.children[0].children[1].visible = true // 盒子丝带-1
+                            model.children[0].children[2].visible = false // 初始-盒子丝带-2
+                            model.children[0].children[3].visible = true // 盒子丝带-2
+                            // model.children[0].children[4].visible = false // 初始-盒子盖子
+                            model.children[0].children[5].visible = false // 初始-主体盒子
+                            model.children[0].children[6].visible = true // 主体盒子
+                            model.children[0].children[7].visible = false // 气体效果
+                            model.children[0].children[8].visible = false // 盒子丝带
+                            model.children[0].children[9].visible = true // 底部丝带-1
+                            model.children[0].children[10].visible = true // 底部丝带-2
+                            model.children[0].children[11].visible = true // 底部丝带-3
+                            model.children[0].children[12].visible = true // 底部丝带-4
+                        } else if (index === 2) {
+                            $('.title-arrow').fadeOut(400)
+                            setTimeout(() => {
+                                $('.title-arrow').html('再点一下哦~')
+                                $('.title-arrow').fadeIn(400)
+                            }, 400)
+                            model.children[0].children[1].visible = false // 盒子丝带-1
+                            model.children[0].children[3].visible = false // 盒子丝带-2
+                        } else if (index === 3) {
+                            $('.title').fadeOut(800)
+                            // 设置卡片样式
+                            const textIndex = parseInt(Math.random() * textList.length)
+                            $('.card-item p').html(textList[textIndex])
+                            $('.card-item').css({ animation: 'card 3s ease forwards' })
+                            setTimeout(() => {
+                                $('.card').css({ 'background': 'rgba(255, 255, 255, 0.5)' })
+                                $('.card-item img').attr({ src: './assets/klm.gif' })
+                            }, 2000)
+                        } else if (index === 4) {
+                            return
+                        }
+                        setAudio(index)
+                        action = mixer.clipAction(gltf.animations[index]).play()
+                        action.loop = THREE.LoopOnce // 不循环
+                        action.clampWhenFinished = true // 结束时停止动画
+                    })
+                    animate()
+                },
+                undefined,
+                function (e) {
+                    console.error(e)
+                }
+            )
+
+            window.onresize = function () {
+                camera.aspect = window.innerWidth / window.innerHeight
+                camera.updateProjectionMatrix()
+                renderer.setSize(window.innerWidth, window.innerHeight)
+            }
+
+            function animate() {
+                requestAnimationFrame(animate)
+                const delta = clock.getDelta()
+                mixer.update(delta)
+                controls.update()
+                renderer.render(scene, camera)
+            }
+
+            function setAudio(index) {
+                const audio = document.querySelector('.audio')
+                audio.src = `./assets/superbox-0${index}.mp3`
+                audio.play()
+            }
+        </script>
+
+        <script>
+            function setReload() {
+                location.reload()
+            }
+        </script>
+    </body>
+</html>
